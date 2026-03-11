@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* Stars */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+animation:moveStars 60s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveStars{
+from{background-position:0 0;}
+to{background-position:1000px 1000px;}
+}
+
+/* Glow title */
+
+.glow{
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px white; }
+to{ text-shadow:0 0 30px #ff4e6a; }
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+/* Button */
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4e6a;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* Typing */
+
+.typing{
+margin-top:20px;
+font-size:20px;
+min-height:30px;
+}
+
+/* Envelope */
+
+.envelope{
+width:200px;
+height:120px;
+background:#ff4e6a;
+margin:40px auto;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+border-left:100px solid transparent;
+border-right:100px solid transparent;
+border-bottom:60px solid #ff7b90;
+transition:1s;
+}
+
+.envelope.open:before{
+transform:rotateX(180deg);
+transform-origin:top;
+}
+
+/* Slideshow */
+
+.slideshow{
+max-width:500px;
+margin:40px auto;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+border-radius:20px;
+}
+
+/* 3D Gallery */
+
+.gallery3d{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.gallery3d img{
+width:200px;
+border-radius:15px;
+transition:.5s;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gallery3d img:hover{
+transform:rotateY(20deg) scale(1.1);
+}
+
+/* 3D Cake */
+
+.cake-container{
+display:flex;
+justify-content:center;
+margin-top:50px;
+perspective:800px;
+}
+
+.cake{
+width:200px;
+height:120px;
+background:#ff8fab;
+border-radius:10px;
+position:relative;
+transform:rotateX(20deg);
+cursor:pointer;
+}
+
+.cake:before{
+content:"";
+position:absolute;
+top:-20px;
+left:0;
+width:200px;
+height:40px;
+background:#ffc2d1;
+border-radius:10px;
+}
+
+/* Candles */
+
+.candles{
+position:absolute;
+top:-40px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:20px;
+}
+
+.candle{
+width:10px;
+height:30px;
+background:white;
+position:relative;
+}
+
+.flame{
+width:10px;
+height:10px;
+background:orange;
+border-radius:50%;
+position:absolute;
+top:-10px;
+animation:flicker .3s infinite alternate;
+}
+
+@keyframes flicker{
+0%{transform:scale(1);}
+100%{transform:scale(1.3);}
+}
+
+/* Hearts */
+
+.heart{
+position:fixed;
+color:red;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-100vh)}
+}
+
+/* Fireworks */
+
+.firework{
+position:fixed;
+font-size:25px;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0)}
+100%{transform:scale(2);opacity:0}
+}
+
+/* Letter */
+
+.letter-page{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+color:#333;
+padding:50px;
+display:none;
+z-index:100;
+overflow:auto;
+}
+
+.letter-page h1{
+color:#ff4e6a;
+margin-bottom:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<audio id="music" loop>
+<source src="c:\Users\acer\OneDrive\Photos\Saal Bhar Mein Sabse Pyara Hota Hai Ek Din Female-(Mr-Jat.in).mp3" type="audio/mp3">
+</audio>
+
+<!-- Hero -->
+
+<div class="hero">
+
+<h1 class="glow">Happy Birthday Dear Shreya ❤️</h1>
+
+<div id="typing" class="typing"></div>
+
+<button onclick="startSurprise()">Open Your Surprise 🎁</button>
+
+</div>
+
+<!-- Envelope -->
+
+<div class="envelope" id="envelope" onclick="openEnvelope()"></div>
+
+<!-- Slideshow -->
+
+<div class="slideshow">
+
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi1.jpeg"></div>
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi2.jpeg"></div>
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi3.jpeg"></div>
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi4.jpeg"></div>
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi7.jpeg"></div>
+<div class="slide"><img src="c:\Users\acer\OneDrive\Photos\khusi8.jpeg"></div>
+
+</div>
+
+<!-- Gallery -->
+
+<div class="gallery3d">
+
+<img src="c:\Users\acer\OneDrive\Photos\khusi11.jpeg">
+<img src="c:\Users\acer\OneDrive\Photos\khusi9.jpeg">
+<img src="c:\Users\acer\OneDrive\Photos\khusi2.jpeg">
+<img src="c:\Users\acer\OneDrive\Photos\khusi5.jpeg">
+<img src="c:\Users\acer\OneDrive\Photos\khusi6.jpeg">
+<img src="c:\Users\acer\OneDrive\Photos\khusi1.jpeg">
+
+
+
+</div>
+
+<!-- Cake -->
+
+<div class="cake-container">
+
+<div class="cake" onclick="blowCandles()">
+
+<div class="candles">
+
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<button onclick="openLetter()">Read My Letter 💌</button>
+
+<!-- Letter -->
+
+<section class="letter-page" id="letter">
+
+<h1>For You ❤️</h1>
+
+<p>
+
+Happy Birthday ❤️
+
+Dear Khusi,
+
+Today is a very special day because it’s the day someone truly amazing came into this world. I just wanted to take a moment to wish you the happiest birthday and tell you how special you are.
+
+Your smile has a way of making everything feel brighter, and your presence makes even ordinary moments feel a little more beautiful. I may not always find the perfect words, but I hope you know that you mean a lot to me.
+
+On your birthday, I wish you endless happiness, success in everything you dream of, and a life filled with love and beautiful memories. You deserve all the good things this world has to offer.
+
+Thank you for being the wonderful person you are. I’m really grateful that I get to know someone as kind, sweet, and special as you.
+
+Once again, happy birthday. I hope your day is full of smiles, laughter, and everything that makes you happy.
+
+With wishes,
+Someone who cares about you ❤️
+
+
+</p>
+
+<br>
+
+<button onclick="closeLetter()">Back</button>
+
+</section>
+
+<script>
+
+/* typing */
+
+let text="Wishing you a day full of love, joy and beautiful memories..."
+let i=0
+
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i)
+i++
+setTimeout(typing,50)
+}
+}
+
+typing()
+
+/* surprise */
+
+function startSurprise(){
+document.getElementById("music").play()
+createConfetti()
+}
+
+/* envelope */
+
+function openEnvelope(){
+document.getElementById("envelope").classList.toggle("open")
+createFireworks()
+}
+
+/* cake */
+
+function blowCandles(){
+
+let flames=document.querySelectorAll(".flame")
+
+flames.forEach(f=>f.style.display="none")
+
+createFireworks()
+
+}
+
+/* slideshow */
+
+let slideIndex=0
+
+function showSlides(){
+
+let slides=document.getElementsByClassName("slide")
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none"
+}
+
+slideIndex++
+
+if(slideIndex>slides.length){
+slideIndex=1
+}
+
+slides[slideIndex-1].style.display="block"
+
+setTimeout(showSlides,3000)
+
+}
+
+showSlides()
+
+/* hearts */
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=Math.random()*25+10+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+},200)
+
+/* fireworks */
+
+function createFireworks(){
+
+for(let i=0;i<40;i++){
+
+let fw=document.createElement("div")
+
+fw.className="firework"
+fw.innerHTML="🎆"
+
+fw.style.left=Math.random()*100+"vw"
+fw.style.top=Math.random()*100+"vh"
+
+document.body.appendChild(fw)
+
+setTimeout(()=>fw.remove(),1000)
+
+}
+
+}
+
+/* confetti */
+
+function createConfetti(){
+
+for(let i=0;i<80;i++){
+
+let conf=document.createElement("div")
+
+conf.innerHTML="🎉"
+
+conf.style.position="fixed"
+conf.style.left=Math.random()*100+"vw"
+conf.style.top="-10px"
+conf.style.fontSize="20px"
+conf.style.animation="float 3s linear"
+
+document.body.appendChild(conf)
+
+setTimeout(()=>conf.remove(),3000)
+
+}
+
+}
+
+/* letter */
+
+function openLetter(){
+document.getElementById("letter").style.display="block"
+}
+
+function closeLetter(){
+document.getElementById("letter").style.display="none"
+}
+
+</script>
+
+</body>
+</html>
